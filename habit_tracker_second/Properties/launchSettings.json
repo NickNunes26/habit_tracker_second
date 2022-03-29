@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "habit_tracker_second": {
+      "commandName": "Project",
+      "workingDirectory": "C:\\Users\\njnda\\source\\repos\\NickNunes26\\habit_tracker_second\\habit_tracker_second"
+    }
+  }
+}
