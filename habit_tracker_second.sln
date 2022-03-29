@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "habit_tracker_second", "habit_tracker_second\habit_tracker_second.csproj", "{7F22F309-88B7-4444-B2AE-17218CE236DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "habit_tracker_second", "habit_tracker_second\habit_tracker_second.csproj", "{7F22F309-88B7-4444-B2AE-17218CE236DF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AEE75856-07E1-4C8C-993B-186C0AFD618A}"
+	ProjectSection(SolutionItems) = preProject
+		DataBaseCmd.cs = DataBaseCmd.cs
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
