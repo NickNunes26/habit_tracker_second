@@ -102,9 +102,24 @@ public class DataBaseCmd
 			return;
 		}
 
-
 		Console.WriteLine("How many hours did you code today?");
-		hoursCoded = Convert.ToInt32(Console.ReadLine());
+
+		var inputError = true;
+		do
+		{
+			try
+			{
+
+				hoursCoded = Convert.ToInt32(Console.ReadLine());
+				inputError = true;
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Please input a valid amount of hours");
+				inputError = false;
+			}
+		}
+		while (inputError == false);
 
 		var query =
 			@"INSERT INTO codingHours (Date, Quantity) VALUES (@Date, @Quantity)";
@@ -135,7 +150,22 @@ public class DataBaseCmd
 		}
 
 		Console.WriteLine("How many hours?");
-		hoursCoded = Convert.ToInt32(Console.ReadLine());
+		var inputError = true;
+		do
+		{
+			try
+			{
+
+				hoursCoded = Convert.ToInt32(Console.ReadLine());
+				inputError = true;
+			}
+			catch (Exception)
+			{
+				Console.WriteLine("Please input a valid amount of hours");
+				inputError = false;
+			}
+		}
+		while (inputError == false);
 
 		var query =
 			@"UPDATE codingHours SET Quantity = " + hoursCoded + " WHERE Date = '" + todayDate + "'";
