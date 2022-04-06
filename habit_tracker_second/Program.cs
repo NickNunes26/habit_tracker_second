@@ -3,7 +3,6 @@ using Microsoft.Data.Sqlite;
 
 
 string connectionString = @"Data Source=habit_tracker.db";
-string reader;
 
 
 
@@ -11,9 +10,10 @@ using (var connection = new SqliteConnection(connectionString))
 {
     using (var tableCmd = connection.CreateCommand())
     {
+        //First part of the Command is create a table open the connection and close it right after
+
         tableCmd.CommandText =
             @"CREATE TABLE IF NOT EXISTS codingHours (
-            Id INTEGER PRIMARY KEY AUTOINCREMENT,
             Date TEXT NOT NULL UNIQUE,
             Quantity INTEGER NOT NULL
             )";
@@ -22,46 +22,22 @@ using (var connection = new SqliteConnection(connectionString))
 
         tableCmd.ExecuteNonQuery();
 
-        DataBaseCmd dataBaseCmd = new DataBaseCmd(tableCmd);
-
-        while (dataBaseCmd.exit == false)
-        {
-            
-
-            Console.WriteLine("What would you like to do?");
-            reader = Console.ReadLine();
-
-            switch (reader)
-            {
-                case "Add":
-                    dataBaseCmd.AddItemToDataBase();
-                    break;
-                case "Remove":
-                    Console.WriteLine("Pending implementation of Remove");
-                    break;
-                case "Check":
-                    Console.WriteLine("Pending implementation of Check");
-                    break;
-                case "Update":
-                    dataBaseCmd.UpdateDataBaseItem();
-                    break;
-                case "Exit":
-                default:
-                    dataBaseCmd.Exit();
-                    break;
-
-            }
-            
-            
-            
-        }
-
-        
-
-
         connection.Close();
 
+        DataBaseCmd dataBaseCmd = new DataBaseCmd(connection);
         
+        //Here the code directs you to InitialCheck, which will start the process of collecting data. At this point the connection is closed.
+
+        while (dataBaseCmd.quitProgram == false)
+        {
+            Console.WriteLine("What would you like to do? (Add/Remove/Check/Update/Exit)");
+            dataBaseCmd.MainMenu(Console.ReadLine());         
+        }
+
+        //Connection must come out closed.
+
+
+
     }
 
     
